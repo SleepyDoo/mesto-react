@@ -16,11 +16,17 @@ React.useEffect(() => {
     setUserAvatar(data.avatar);
     setUserDescription(data.about)
   })
+  .catch((err) => {
+    console.log(err)
+  })
   api.getInitialCards()
   .then((data) => {
     setCards(data)
   })
-})
+  .catch((err) => {
+    console.log(err)
+  })
+}, [])
 
     return(
         <main>
