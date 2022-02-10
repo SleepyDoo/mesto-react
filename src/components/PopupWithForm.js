@@ -3,7 +3,7 @@ function PopupWithForm(props) {
         <div className={props.isOpen ? `popup popup_content_${props.name} popup_opened` : `popup popup_content_${props.name}`}> 
           <div className="popup__container">
             <button className="popup__close-button popup__close-button_content_edit-bio" type="button" onClick={props.onClose}/>
-            <form className="form" name={props.name} noValidate>
+            <form className="form" name={props.name} noValidate onSubmit={props.onSubmit}>
               <h2 className="form__heading">{props.title}</h2>
               <fieldset className="form__fieldset">
                 {props.children}

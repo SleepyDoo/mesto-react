@@ -50,7 +50,6 @@ class Api {
         })
         .then(this._getResult)
       }
-      qwerty = () => this.addNewCard()
       
       removeCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
@@ -85,6 +84,15 @@ class Api {
             })
         })
         .then(this._getResult)
+      }
+
+      changeLikeCardStatus(id, isLiked) {
+        if (isLiked) {
+          return this.unlike(id);
+        }
+        else {
+          return this.setLike(id);
+        }
       }
 
 }
