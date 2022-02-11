@@ -22,14 +22,19 @@ export default function AddPlacePopup(props) {
         })
     }
 
-    return(
-        <PopupWithForm name='element' title='Новое место' isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
-          <input className="form__input" id="element-name-input" type="text" placeholder="Название" name="name" required maxLength={30} minLength={2} 
-          onChange={handleCardNameChange}/>
-          <span className="form__error" id="element-name-input-error" />
-          <input className="form__input" id="url-input" type="url" placeholder="Ссылка на картинку" name="link" required 
-          onChange={handleLinkChange}/>
-          <span className="form__error" id="url-input-error" />
+    React.useEffect(() => {
+        setCardName('');
+        setLink('');
+    }, [props.isOpen]);
+
+    return (
+        <PopupWithForm name='element' title='Новое место' isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit} buttonText='Создать'>
+            <input className="form__input" id="element-name-input" type="text" placeholder="Название" name="name" required maxLength={30} minLength={2}
+                onChange={handleCardNameChange} value={cardName || ''} />
+            <span className="form__error" id="element-name-input-error" />
+            <input className="form__input" id="url-input" type="url" placeholder="Ссылка на картинку" name="link" required
+                onChange={handleLinkChange} value={link || ''} />
+            <span className="form__error" id="url-input-error" />
         </PopupWithForm>
     )
 }
